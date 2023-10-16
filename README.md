@@ -1,6 +1,6 @@
 # Smart School
 
-CodeFusion Smart School
+## CodeFusion Smart School
 
 The goal of this project is to develop a comprehensive and user-friendly web application for managing and enhancing the operations of a Smart School. The application will be built using ReactJS for the frontend, Django for the backend, and PostgreSQL for the database. The primary objective is to create a digital platform that streamlines various aspects of school management, including user authentication, administrative tasks, teacher and staff management, and student services.
 
@@ -130,7 +130,12 @@ npx tailwindcss init
 
 ## Author
 
-This project was created by [Author's Name](Author's GitHub Profile or Contact Information).
+This project was created by 
+[Muhammad Badrul](https://github.com/muhammadbadrul1234).
+[Author's Name](Author's GitHub Profile or Contact Information).
+[Author's Name](Author's GitHub Profile or Contact Information).
+[Author's Name](Author's GitHub Profile or Contact Information).
+
 
 
 ## Conclusion of the Project

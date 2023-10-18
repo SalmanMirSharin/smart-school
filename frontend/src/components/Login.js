@@ -24,11 +24,9 @@ export const Login = () => {
 
 
 
-
-
   return (
     <>
-      <Navbar />
+
       <section className="Login">
         {/* <Header/> */}
 

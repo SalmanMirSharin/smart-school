@@ -1,0 +1,30 @@
+
+:root{
+    --primary: hsla(202, 100%, 50%, 0.5);
+    --secendary: hsla(205, 90%, 19%, 0.5);
+    --white-bg: rgb(244, 246, 244,0.5)
+}
+
+
+.home-page{
+    max-width: 100%;
+    overflow-x: hidden;
+    height: 100vh;
+    background: rgb(244, 246, 244);
+    background: linear-gradient(var(--primary),var(--secendary)),url('../../public/image/wave\ image.avif') no-repeat center center / cover;
+    
+    /* background: linear-gradient(var(--white-bg)),url('../../public/image/smoke.png') no-repeat center center / cover;
+     */
+     /* background-image: url('../image//smoke.png'); */
+     /* opacity: 0.7; */
+}
+
+.container{
+    width: 80%;
+}
+
+.teacher_container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2.5rem;
+}

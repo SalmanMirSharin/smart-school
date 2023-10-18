@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../css/Navbar.css";
-
+import { Outlet, Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [showLinks, setShowLinks] = React.useState(false);
@@ -17,19 +17,30 @@ export const Navbar = () => {
           <div className="menu">
             <ul>
               <li>
-                <a href="/">Home</a>
+               
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <a href="/aboutUs">About Us</a>
+            
+                <Link to="/about">About Us</Link>
+
               </li>
               <li>
-                <a href="/login">Login</a>
+        
+                <Link to="/leaverequest">Leave-Request</Link>
+
+              </li>
+              <li>
+
+                <Link to="/login">Login</Link>
+
               </li>
             </ul>
           </div>
         </div>
       </nav>
       {/* hero section */}
+      <Outlet />
     </>
   );
 };

@@ -23,6 +23,9 @@ export const Navbar = () => {
                 <a href="/aboutUs">About Us</a>
               </li>
               <li>
+                <a href="/apply_student_addmission">Apply Admission</a>
+              </li>
+              <li>
                 <a href="/login">Login</a>
               </li>
             </ul>

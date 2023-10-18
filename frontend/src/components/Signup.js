@@ -141,20 +141,6 @@ export const Signup = () => {
                   value="Signup"
                 />
               </div>
-              <div className="or">
-                <span>Or</span>
-              </div>
-              {/* Google Signup
-              <div className="gform-group form-button">
-                <input
-                  type="gsubmit"
-                  name="gsignup"
-                  id="gsignup"
-                  className="gform-submit"
-                  value="Signup with Google"
-                  // onClick={handleSignUp}
-                />
-              </div> */}
             </form>
           </div>
         </div>

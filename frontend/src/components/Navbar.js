@@ -34,7 +34,10 @@ export const Navbar = () => {
 
                 <Link to="/login">Login</Link>
 
+
+                <a href="/apply_student_addmission">Apply Admission</a>
               </li>
+
             </ul>
           </div>
         </div>

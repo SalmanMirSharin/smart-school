@@ -1,92 +1,105 @@
-import React from "react";
+
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { useLoginUserMutation } from "../rtkq/services/userAuthApi";
 import "../css/Login.css";
-import { useState } from "react";
 import { Navbar } from "./Navbar";
+import { StudentApplyAdmission } from "./StudentApplyAdmission";
 
 export const Login = () => {
-  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
 
+  const navigate = useNavigate();
+  const [loginUser, { isLoading }] = useLoginUserMutation();
+
   const toggle = () => {
     setShowPassword(!showPassword);
   };
 
-  
-
-  const handlelogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    setError(true);
+    setError(false); // Clear previous error messages
 
+    try {
+      const res = await loginUser({ email, password });
+
+      if (res.error) {
+        console.log("Login error:", res.error);
+        setError(true); // Show an error message
+      }
+
+      if (res.data) {
+        console.log("Login successful:", res.data);
+        navigate('/apply_student_admission');
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
-
-
 
   return (
     <>
-
       <section className="Login">
-        {/* <Header/> */}
-
-        <div className="container mt-5">
+        <div className="container mt-7">
           <div className="Login-content">
             <div className="Login-h"></div>
-            <h2>Login</h2>
-            <form className="Login-form" id="Login-form">
-              {/* Email */}
+            <h2 className="pb-7">Login</h2>
+            <form className="Login-form" onSubmit={handleLogin}>
               <div className="login-form-group">
-                <label htmlFor="email"></label>
+                <label htmlFor="email">Email</label>
                 <input
                   type="email"
                   name="email"
                   id="email"
                   autoComplete="off"
                   placeholder="Email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
 
-              {/* Password */}
               <div className="form-group">
-                <label htmlFor="password"></label>
+                <label htmlFor="password">Password</label>
                 <input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
                   autoComplete="off"
                   placeholder="Password"
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
 
               {error && <span>Wrong Email or Password</span>}
 
-              {/* Checkbox */}
               <div className="checkbox">
                 <input
                   type="checkbox"
-                  name="checkbox"
-                  id="checkbox"
-                  className="checkbox"
-                  onClick={toggle}
-                />{" "}
-                Show Password
+                  id="showPassword"
+                  checked={showPassword}
+                  onChange={toggle}
+                />
+                <label htmlFor="showPassword">Show Password</label>
               </div>
+
               <div>
                 <a href="/signup">Don't have an account? Sign Up</a>
               </div>
-              {/* Submit */}
+
               <div className="form-group form-button">
-                <input
+                <button
                   type="submit"
-                  name="Login"
-                  id="Login"
-                  className="form-submit"
-                  value="Login"
-                  onClick={handlelogin}
-                />
+                  className="form-submit bg-blue-400"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Logging in..." : "Login"}
+                </button>
               </div>
             </form>
           </div>

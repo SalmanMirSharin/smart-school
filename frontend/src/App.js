@@ -24,7 +24,7 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
 
-          <Route path="/apply_student_addmission" element={<StudentApplyAdmission />} />
+          <Route path="/apply_student_admission" element={<StudentApplyAdmission />} />
 
 
         </Routes>

@@ -83,7 +83,7 @@ Education is defined as a learning process for the individual to attain knowledg
 
 
       <div className='h-screen'>
-        <h3 className='flex justify-center uppercase text-3xl font-semibold p-10'>Faculty Member</h3>
+        <h3 className='flex justify-center capitalize text-4xl font-semibold p-10'>Faculty Member</h3>
 
     <div className='container teacher_container'>
 

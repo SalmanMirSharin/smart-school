@@ -7,6 +7,7 @@ import Test from "./test";
 import { Navbar } from "./components/Navbar";
 import Home from "./components/Home";
 import { StudentApplyAdmission } from "./components/StudentApplyAdmission";
+import Footer from "./components/footer";
 
 
 
@@ -25,9 +26,11 @@ function App() {
           <Route path="signup" element={<Signup />} />
 
           <Route path="/apply_student_admission" element={<StudentApplyAdmission />} />
+         
 
 
         </Routes>
+        <Footer />
       </BrowserRouter>
     );
 }

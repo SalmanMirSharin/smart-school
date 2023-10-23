@@ -32,7 +32,6 @@ export const Signup = () => {
 
   return (
     <>
-      <Navbar />
       <section className="signup">
         <div className="container mt-5">
           <div className="signup-content">
@@ -137,7 +136,7 @@ export const Signup = () => {
                   type="submit"
                   name="signup"
                   id="signup"
-                  className="form-submit"
+                  className="form-submit bg-blue-400"
                   value="Signup"
                 />
               </div>

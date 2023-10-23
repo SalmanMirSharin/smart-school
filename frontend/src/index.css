@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 
+body{
+    overflow-x: hidden;
+}
 
 /* @import "tailwind/base";
 @import "tailwind/components";

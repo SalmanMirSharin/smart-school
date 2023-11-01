@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/Navbar.css";
 import { Outlet, Link } from "react-router-dom";
+import profile from "../image/profile.png"
 
 export const Navbar = () => {
   const [showLinks, setShowLinks] = React.useState(false);
@@ -14,8 +15,8 @@ export const Navbar = () => {
             {/* <img src={h1logo} alt="Code Compass" /> */}
           </div>
           {/* Menu Part */}
-          <div className="menu">
-            <ul>
+          <div className="menu ">
+            <ul className="ml-[-9.5rem]">
               <li>
                
                 <Link to="/">Home</Link>
@@ -34,10 +35,13 @@ export const Navbar = () => {
 
                 <Link to="/login">Login</Link>
 
-                {/* <a href="/apply_student_addmission">Apply Admission</a> */}
+               
               </li>
               <li>
                 <Link to="/apply_student_admission">Apply Admission</Link>
+              </li>
+              <li>
+                <Link to="/profle"><img src={profile} alt="profile" className="w-7 ml-0" /></Link>
               </li>
 
             </ul>

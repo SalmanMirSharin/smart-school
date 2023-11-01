@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../css/StudentApplyAdmission.css'; // Import your CSS file
 import DemoImg  from "../img/nobody.png";
 import DemoSig from "../img/sample_sig.jpg";
+import { useStudentAdmissionMutation } from '../rtkq/services/userAuthApi';
 
 export const StudentApplyAdmission = () => {
   // State to manage form data
@@ -12,8 +13,8 @@ export const StudentApplyAdmission = () => {
     studentLastName: '',
     studentEmail: '',
     studentPhoneNumber: '',
-    studentImage: DemoImg, // You may use a file input for images
-    studentSignature: DemoSig, // You may use a file input for signatures
+    studentImage: DemoImg, 
+    studentSignature: DemoSig, 
     studentGender: '',
     studentReligion: '',
     studentNationality: '',
@@ -51,41 +52,50 @@ export const StudentApplyAdmission = () => {
     previousSchoolClassRoll: '',
   });
 
-  // Handler for form input changes
-  const handleInputChange = (e) => {
-    const { name, type, files } = e.target;
+  const [error, setError] = useState(false);
+  const [studentAdmission, { isLoading }] = useStudentAdmissionMutation();
+
+
+const handleInputChange = (event) => {
+    const { name, value, type, files } = event.target;
+    let fileData = value;
   
-    if (type === "file" && files) {
-      const file = files[0];
-  
-      if (file) {
-        const reader = new FileReader();
-  
-        reader.onloadend = () => {
-          setFormData({
-            ...formData,
-            [name]: reader.result,
-          });
-        };
-  
-        reader.readAsDataURL(file);
-      }
-    } else {
-      // For other input types (text, etc.)
-      setFormData({
-        ...formData,
-        [name]: e.target.value,
-      });
+    if (type === 'file' && files.length > 0) {
+      // Handle the file input
+      fileData = files[0];
     }
-  };
+  
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: fileData,
+    }));
+  }
   
 
-  // Handler for form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // TODO: Handle form submission logic (e.g., send data to backend)
-    console.log('Form submitted:', formData);
-  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    
+    try {
+      const res = await studentAdmission(formData);
+
+      if (res.error) {
+        console.log("Login error:", res.error);
+        setError(true); // Show an error message
+      }
+
+      if (res.data) {
+        console.log("Login successful:", res.data);
+        // navigate('/apply_student_admission');
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+
+  }
+
+
 
   return (
     
@@ -112,10 +122,10 @@ export const StudentApplyAdmission = () => {
                 <label>Admission Group <strong>*</strong> </label>
                 <select name="admissionGroup" value={formData.admissionGroup} onChange={handleInputChange} required >
                   <option disabled value="Science">Select</option>
-                  <option value="science">Science</option>
-                  <option value="arts">Arts</option>
-                  <option value="commerce">Commerce</option>
-                  <option value="general">General</option>
+                  <option value="Science">Science</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Commerce">Commerce</option>
+                  <option value="General">General</option>
                 </select>
               </div>
             </div>
@@ -135,7 +145,7 @@ export const StudentApplyAdmission = () => {
                 <label>Student Image <strong>*</strong> </label>
                 <input
                   type="file"
-                  accept=".jpg, .jpeg, .png"
+                //   accept=".jpg, .jpeg, .png"
                   name="studentImage"
                   onChange={handleInputChange}
                   required
@@ -155,7 +165,7 @@ export const StudentApplyAdmission = () => {
                 <label>Student Signature <strong>*</strong> </label>
                 <input
                   type="file"
-                  accept=".jpg, .jpeg, .png"
+                  // accept=".jpg, .jpeg, .png"
                   name="studentSignature"
                   onChange={handleInputChange}
                   required
@@ -181,7 +191,7 @@ export const StudentApplyAdmission = () => {
                   required
                 />
               </div>
-              <dv className='admission-form-info'>
+              <div className='admission-form-info'>
                 <label>Last Name <strong>*</strong></label>
                 <input
                   type="text"
@@ -190,7 +200,7 @@ export const StudentApplyAdmission = () => {
                   onChange={handleInputChange}
                   required
                 />
-              </dv>
+              </div>
               <div className='admission-form-info'>
                 <label>Student E-mail address <strong>*</strong></label>
                 <input
@@ -227,24 +237,24 @@ export const StudentApplyAdmission = () => {
                   required
                   >
                   <option disabled value="Class1">Select</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="tiktoker">Tiktoker</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div className='admission-form-info'>
                 <label>Religon <strong>*</strong> </label>
                 <select
-                  name="studentReligon"
-                  value={formData.studentReligon}
+                  name="studentReligion"
+                  value={formData.studentReligion}
                   onChange={handleInputChange}
                   required
                   >
                   <option disabled value="Class1">Select</option>
-                  <option value="islam">Islam</option>
-                  <option value="christianity">Christianity</option>
-                  <option value="buddhism">Buddhism</option>
-                  <option value="hinduism">Hinduism</option>
+                  <option value="Islam">Islam</option>
+                  <option value="Christianity">Christianity</option>
+                  <option value="Buddhism">Buddhism</option>
+                  <option value="Hinduism">Hinduism</option>
                 </select>
               </div>
             </div>
@@ -257,8 +267,8 @@ export const StudentApplyAdmission = () => {
                 <label> Birth Date <strong>*</strong></label>
                 <input
                   type="date"
-                  name="studentBirthDate"
-                  value={formData.studentBirthDate}
+                  name="birthDate"
+                  value={formData.birthDate}
                   onChange={handleInputChange}
                   required
                 />
@@ -352,12 +362,12 @@ export const StudentApplyAdmission = () => {
                 </div>
                 <div className="admission-form-info">
                   <label>Father's Religion <strong>*</strong> </label>
-                  <select name="fatherReligon" id="fatherReligion" value={formData.fatherReligion} onChange={handleInputChange} required>
+                  <select name="fatherReligion" id="fatherReligion" value={formData.fatherReligion} onChange={handleInputChange} required>
                     <option disabled >Select</option>
-                    <option value="islam">Islam</option>
-                    <option value="christianity">Christianity</option>
-                    <option value="buddhism">Buddhism</option>
-                    <option value="hinduism">Hinduism</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Christianity">Christianity</option>
+                    <option value="Buddhism">Buddhism</option>
+                    <option value="Hinduism">Hinduism</option>
                   </select>
                 </div>
                 <div className='admission-form-info'>
@@ -447,12 +457,12 @@ export const StudentApplyAdmission = () => {
                 </div>
                 <div className="admission-form-info">
                   <label>Mother's Religion <strong>*</strong> </label>
-                  <select name="motherReligon" id="fatherReligion" value={formData.motherReligion} onChange={handleInputChange} required>
+                  <select name="fatherReligion" id="fatherReligion" value={formData.motherReligion} onChange={handleInputChange} required>
                     <option disabled >Select</option>
-                    <option value="islam">Islam</option>
-                    <option value="christianity">Christianity</option>
-                    <option value="buddhism">Buddhism</option>
-                    <option value="hinduism">Hinduism</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Christianity">Christianity</option>
+                    <option value="Buddhism">Buddhism</option>
+                    <option value="Hinduism">Hinduism</option>
                   </select>
                 </div>
                 <div className='admission-form-info'>

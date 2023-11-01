@@ -26,3 +26,86 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} (Class {self.current_class})"
+    
+    
+
+    
+# Student Admission model:
+
+class StudentAdmission(models.Model):
+    ADMISSION_CHOICES = (
+        ('Class1', 'Class 1'),
+        ('Class2', 'Class 2'),
+    )
+    
+    ADMISSION_GROUP_CHOICES = (
+        ('Science', 'Science'),
+        ('Arts', 'Arts'),
+        ('Commerce', 'Commerce'),
+        ('General', 'General'),
+    )
+    
+    GENDER_CHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
+    )
+    
+    RELIGION_CHOICES = (
+        ('Islam', 'Islam'),
+        ('Christianity', 'Christianity'),
+        ('Buddhism', 'Buddhism'),
+        ('Hinduism', 'Hinduism'),
+    )
+    
+    NATIONALITY_CHOICES = (
+        ('Bangladeshi', 'Bangladeshi'),
+    )
+    
+    admissionFor = models.CharField(max_length=7, choices=ADMISSION_CHOICES, default='Class1')
+    admissionGroup = models.CharField(max_length=9, choices=ADMISSION_GROUP_CHOICES, default='Science')
+    studentFirstName = models.CharField(max_length=100)
+    studentLastName = models.CharField(max_length=100)
+    studentEmail = models.EmailField()
+    studentPhoneNumber = models.CharField(max_length=15)
+    studentImage = models.ImageField(upload_to='student_images/')
+    studentSignature = models.ImageField(upload_to='student_signatures/')
+    studentGender = models.CharField(max_length=10, choices=GENDER_CHOICES,default='Male')
+    studentReligion = models.CharField(max_length=15, choices=RELIGION_CHOICES,default='Islam')
+    studentNationality = models.CharField(max_length=15, choices=NATIONALITY_CHOICES,default='Bangladesh')
+    birthDate = models.DateField()
+    birthCertificateNumber = models.PositiveIntegerField()
+    fatherName = models.CharField(max_length=100)
+    fatherNID = models.PositiveIntegerField()
+    fatherPhoneNumber = models.CharField(max_length=15)
+    fatherOccupation = models.CharField(max_length=100)
+    fatherReligion = models.CharField(max_length=15, choices=RELIGION_CHOICES,default='Islam')
+    fatherMonthlyIncome = models.PositiveIntegerField()
+    fatherNationality = models.CharField(max_length=15, choices=NATIONALITY_CHOICES,default='Bangladesh')
+    motherName = models.CharField(max_length=100)
+    motherNID = models.PositiveIntegerField()
+    motherPhoneNumber = models.CharField(max_length=15)
+    motherOccupation = models.CharField(max_length=100)
+    motherReligion = models.CharField(max_length=15, choices=RELIGION_CHOICES,default='Islam')
+    motherMonthlyIncome = models.PositiveIntegerField()
+    motherNationality = models.CharField(max_length=15, choices=NATIONALITY_CHOICES,default='Bangladesh')
+    presentAddressLine1 = models.CharField(max_length=100)
+    presentAddressLine2 = models.CharField(max_length=100, blank=True, null=True)
+    presentZila = models.CharField(max_length=100)
+    presentThana = models.CharField(max_length=100, blank=True, null=True)
+    presentPostalCode = models.PositiveIntegerField()
+    permanentAddressLine1 = models.CharField(max_length=100)
+    permanentAddressLine2 = models.CharField(max_length=100, blank=True, null=True)
+    permanentZila = models.CharField(max_length=100)
+    permanentThana = models.CharField(max_length=100, blank=True, null=True)
+    permanentPostalCode = models.PositiveIntegerField()
+    previousClass = models.CharField(max_length=100, blank=True, null=True)
+    previousClassGroup = models.CharField(max_length=15, choices=ADMISSION_GROUP_CHOICES, default='Science', blank=True, null=True)
+    previousClassResultTotalMark = models.PositiveIntegerField(blank=True, null=True)
+    previousClassResultGPA = models.DecimalField(max_digits=4, decimal_places=2, blank=True, null=True)
+    previousSchoolName = models.CharField(max_length=100, blank=True, null=True)
+    previousSchoolClassRoll = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.studentFirstName} {self.studentLastName} - {self.admissionFor}'
+

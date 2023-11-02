@@ -1,8 +1,10 @@
 import React from "react";
 import "../css/Signup.css";
 import { useState } from "react";
+import {useRegisterUserMutation} from '../rtkq/services/userAuthApi'
+import { storeToken } from '../rtkq/services/localStorageService';
 
-import { Navbar } from "./Navbar";
+
 
 export const Signup = () => {
 
@@ -13,40 +15,79 @@ export const Signup = () => {
   const [phone, setPhone] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
+  const [registerUser,{isLoading}] = useRegisterUserMutation()
+
   const toggle = () => {
     setShowPassword(!showPassword);
   };
 
-  // const ffstore = db.firestore().collection("users");
-  // // console.log(ffstore);
-
-
-  // print firebase colelction
   
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const data = new FormData(e.currentTarget);
+  //   const actualData = {
+  //     first_name: data.get('first_name'),
+  //     last_name: data.get('last_name'),
+  //     email: data.get('email'),
+  //     // phone: data.get('phone'),
+  //     role: data.get('role'),
+  //     password: data.get('password'),
+  //     password2: data.get('password2'),
+    
+  //   }
+
+  //   const res = await registerUser(actualData)
+    
+  //   if (res.data){
+  //     storeToken(res.data.token)
+  //     // navigate('/dashboard')
+  //   }
+  // }
 
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const actualData = {
+      first_name: data.get('first_name'),
+      last_name: data.get('last_name'),
+      email: data.get('email'),
+      role: data.get('role'),
+      password: data.get('password'),
+      password2: data.get('password2'),
+    }
   
+    try {
+      const res = await registerUser(actualData);
+      
+      if (res.data) {
+        storeToken(res.data.token);
+        console.log(res.data);
+      }
+    } catch (error) {
+      console.error('API Request Error:', error);
+      // Handle the error, e.g., display an error message to the user.
+    }
+  }
   
-
 
 
   return (
     <>
-      <Navbar />
       <section className="signup">
         <div className="container mt-5">
           <div className="signup-content">
             <div className="signup-form"></div>
             <h2>Create your Account</h2>
             
-            <form className="register-form" id="register-form">
+            <form className="register-form" id="register-form" onSubmit={handleSubmit}>
               {/* First Name */}
               <div className="signup-form-group">
                 <label htmlFor="firstname"></label>
                 <input
                   type="text"
-                  name="firstname"
-                  id="firstname"
+                  name="first_name"
+                  id="first_name"
                   autoComplete="off"
                   placeholder="First Name"
                   onChange={(e) => setFirstName(e.target.value)}
@@ -58,8 +99,8 @@ export const Signup = () => {
                 <label htmlFor="last-name"></label>
                 <input
                   type="text"
-                  name="last-name"
-                  id="last-name"
+                  name="last_name"
+                  id="last_name"
                   autoComplete="off"
                   placeholder="Last Name"
                   onChange={(e) => setLastName(e.target.value)}
@@ -79,18 +120,23 @@ export const Signup = () => {
                 />
               </div>
 
-              {/* Phone */}
-              <div className="signup-form-group">
-                <label htmlFor="phone"></label>
-                <input
-                  type="text"
-                  name="phone"
-                  id="phone"
-                  autoComplete="off"
-                  placeholder="Phone"
+              <div className='signup-form-group '>
+                <label htmlFor="role"></label>
+                <select className="select-option"
+                  name="role"
+                  // value={formData.studentGender}
+                  placeholder="Student/Teacher"
                   onChange={(e) => setPhone(e.target.value)}
-                />
+                  required
+                  >
+                  <option disabled value="admin">Select</option>
+                  <option value="admin">Admin</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="student">Student</option>
+                  <option value="office_staff">Office_staff</option>
+                </select>
               </div>
+
 
               {/* Password */}
               <div className="signup-form-group">
@@ -110,8 +156,8 @@ export const Signup = () => {
                 <label htmlFor="confirm-password"></label>
                 <input
                   type={showPassword ? "text" : "password"}
-                  name="confirm-password"
-                  id="confirm-password"
+                  name="password2"
+                  id="password2"
                   autoComplete="off"
                   placeholder="Confirm Password"
                 />
@@ -129,7 +175,7 @@ export const Signup = () => {
                 Show Password
               </div>
               <div>
-                <a href="/login">Already have an account?</a>
+                <a href="/login" className="hover:text-blue-700 hover:text-sm">Already have an account?</a>
               </div>
               {/* Submit */}
               <div className="form-group form-button">
@@ -137,7 +183,7 @@ export const Signup = () => {
                   type="submit"
                   name="signup"
                   id="signup"
-                  className="form-submit"
+                  className="form-submit bg-blue-400"
                   value="Signup"
                 />
               </div>

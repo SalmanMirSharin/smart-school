@@ -14,7 +14,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(verbose_name="Email", max_length=155, unique=True,)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    role = models.CharField(max_length=15, choices=ROLE_CHOICES, default="None")
+    role = models.CharField(max_length=15, choices=ROLE_CHOICES, default="admin")
     is_admin = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     ceated_at = models.DateTimeField(auto_now_add=True)

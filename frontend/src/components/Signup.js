@@ -175,7 +175,7 @@ export const Signup = () => {
                 Show Password
               </div>
               <div>
-                <a href="/login">Already have an account?</a>
+                <a href="/login" className="hover:text-blue-700 hover:text-sm">Already have an account?</a>
               </div>
               {/* Submit */}
               <div className="form-group form-button">

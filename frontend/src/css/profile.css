@@ -6,7 +6,7 @@
 
 }
 
-.container{
+.profile-container{
     width: 90%;
     /* height: 100%; */
     display: flex;
@@ -24,7 +24,7 @@
    
 }
 
-h3{
+.person{
     text-align: center;
     padding:0 0 1.5rem 8rem;
     font-size: 2rem;

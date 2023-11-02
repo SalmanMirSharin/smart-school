@@ -89,7 +89,7 @@ export const Login = () => {
               </div>
 
               <div>
-                <a href="/signup">Don't have an account? Sign Up</a>
+                <a href="/signup" className="hover:text-blue-700 hover:text-sm">Don't have an account? Sign Up</a>
               </div>
 
               <div className="form-group form-button">

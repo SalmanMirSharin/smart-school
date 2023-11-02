@@ -3,3 +3,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body{
+    overflow-x: hidden;
+}
+
+/* @import "tailwind/base";
+@import "tailwind/components";
+@import "tailwind/utilities"; */
+
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */

@@ -7,25 +7,27 @@ from accounts.utils import Util
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    password2= serializers.CharField(style={'input_type': 'password'}, write_only=True)
-    
+    password2 = serializers.CharField(style={'input_type': 'password'}, write_only=True)
+
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'last_name', 'role', 'password', 'password2']
-        extra_kwargs= {
+        fields = ['first_name', 'last_name', 'email', 'role', 'password', 'password2']
+        extra_kwargs = {
             'password': {'write_only': True}
         }
-    # Validating password and confrim password while Registration
+
+    # Validating password and confirm password while Registration
     def validate(self, data):
-        password= data.get('password')
-        password2= data.get('password2')
+        password = data.get('password')
+        password2 = data.get('password2')
 
         if password != password2:
-            raise serializers.ValidationError("Password and confrim password doesn't match.")
+            raise serializers.ValidationError("Password and confirm password don't match.")
         return data
 
-    def create(self, validate_data):
-        return User.objects.create_user(**validate_data)
+    def create(self, validated_data):  # Fix the argument name here
+        return User.objects.create_user(**validated_data)
+
 
 class UserLoginSerializer(serializers.ModelSerializer):
     email= serializers.EmailField(max_length=155)

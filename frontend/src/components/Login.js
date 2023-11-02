@@ -5,6 +5,7 @@ import { useLoginUserMutation } from "../rtkq/services/userAuthApi";
 import "../css/Login.css";
 import { Navbar } from "./Navbar";
 import { StudentApplyAdmission } from "./StudentApplyAdmission";
+import { storeToken } from '../rtkq/services/localStorageService';
 
 export const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,7 +34,8 @@ export const Login = () => {
 
       if (res.data) {
         console.log("Login successful:", res.data);
-        navigate('/apply_student_admission');
+        storeToken(res.data.token);
+        navigate('/profile');
       }
     } catch (error) {
       console.error("An error occurred:", error);

@@ -9,11 +9,14 @@ import Home from "./components/Home";
 import { StudentApplyAdmission } from "./components/StudentApplyAdmission";
 import Footer from "./components/footer";
 import Profile from "./components/profile";
-
-
+import { StudentNav } from "./components/studentNav";
 
 
 function App() {
+
+
+
+
     return (
      
         
@@ -23,11 +26,13 @@ function App() {
         
           <Route index element={<Home />} />
           <Route path="leaverequest" element={<LeaveRequestForm />} />
+       
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
 
           <Route path="apply_student_admission" element={<StudentApplyAdmission />} />
-          <Route path="profle" element={<Profile />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="studentnav" element={<StudentNav />} />
          
 
 

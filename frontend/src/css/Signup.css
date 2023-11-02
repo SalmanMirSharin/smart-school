@@ -131,3 +131,11 @@ a{
     justify-content: center;
 
 }
+
+.select-option{
+    width: 100%;
+    /* border: 1px solid gray; */
+    background-color: #eeeeec;
+    padding: 0.3rem;
+    margin-bottom: 1rem;
+}

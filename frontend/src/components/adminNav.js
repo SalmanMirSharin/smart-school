@@ -5,7 +5,7 @@ import {removeToken} from "../rtkq/services/localStorageService"
 import { useNavigate } from "react-router-dom";
 
 
-export const StudentNav = () => {
+export const AdminNav = () => {
 
   const nanigate = useNavigate()
 
@@ -28,12 +28,12 @@ export const StudentNav = () => {
         
               <li>
         
-                <Link to="/leaverequest">Leave-Request</Link>
+                <Link to="/signup">Signup</Link>
 
               </li>
 
               <li>
-             
+               
                 <button onClick={handelLogout}>Logout</button>
               </li>
               

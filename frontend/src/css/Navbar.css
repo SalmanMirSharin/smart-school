@@ -49,15 +49,17 @@ img{
 .menu ul{
     align-items: right;
     display: flex;
-    margin-left: 5rem;
-    justify-content: space-around;
+    /* margin-left: 5rem; */
+    /* justify-content: space-around; */
+    justify-content: right;
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
     color: white;
-
-   
 }
 
+.menu ul li{
+    margin-left: 1rem;
+}
 
 .menu ul :hover{
     color: #336CFF;

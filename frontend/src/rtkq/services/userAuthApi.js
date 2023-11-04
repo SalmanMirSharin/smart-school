@@ -104,7 +104,18 @@ export const userStudentApi = createApi({
       },
     }),
 
+
+    studentAdmissionGet: builder.query({
+      query: (user) => {
+
+        return {
+          url: 'studentinfo-get/', 
+          method: 'GET', 
+        };
+      },
+    }),
+
   }),
 })
 
-export const { useStudentAdmissionMutation } = userStudentApi;
+export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery } = userStudentApi;

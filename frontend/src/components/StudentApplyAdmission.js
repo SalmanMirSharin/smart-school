@@ -666,10 +666,10 @@ const handleInputChange = (event) => {
                   required
                   >
                   <option disabled>Select</option>
-                  <option value="science">Science</option>
-                  <option value="arts">Arts</option>
-                  <option value="commerce">Commerce</option>
-                  <option value="general">General</option>
+                  <option value="Science">Science</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Commerce">Commerce</option>
+                  <option value="General">General</option>
                 </select>
               </div>
               <div className='admission-form-info'>

@@ -33,6 +33,10 @@ export const AdminNav = () => {
               </li>
 
               <li>
+                <Link to="/student-get">Admission Details</Link>
+              </li>
+
+              <li>
                
                 <button onClick={handelLogout}>Logout</button>
               </li>

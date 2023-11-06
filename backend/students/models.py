@@ -109,3 +109,12 @@ class StudentAdmission(models.Model):
     def __str__(self):
         return f'{self.studentFirstName} {self.studentLastName} - {self.admissionFor}'
 
+
+
+class ClassRoutineModel(models.Model):
+    classDay = models.CharField(max_length=100)
+    teacherName = models.CharField(max_length=100)
+    subjectData = models.TextField()
+    
+    def __str__(self):
+        return self.classDay

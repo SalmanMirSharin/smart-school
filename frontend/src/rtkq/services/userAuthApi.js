@@ -115,7 +115,20 @@ export const userStudentApi = createApi({
       },
     }),
 
+    
+    classRoutine: builder.mutation({
+      query: (formdata) => {
+        const formData = createFormData(formdata);
+        return {
+          url: 'classroutine/',
+          method: 'POST',
+          body: formData,
+        };
+      },
+    }),
+
+
   }),
 })
 
-export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery } = userStudentApi;
+export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation } = userStudentApi;

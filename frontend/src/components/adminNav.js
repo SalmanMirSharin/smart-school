@@ -33,6 +33,10 @@ export const AdminNav = () => {
               </li>
 
               <li>
+                <Link to="/classroutine">Make Routine</Link>
+              </li>
+
+              <li>
                 <Link to="/student-get">Admission Details</Link>
               </li>
 

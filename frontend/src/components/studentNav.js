@@ -25,6 +25,10 @@ export const StudentNav = () => {
               <li>
                 <Link to="/profile">Profile</Link>
               </li>
+
+              <li>
+                <Link to="/classroutine-get">RoutineShow</Link>
+              </li>
         
               <li>
         

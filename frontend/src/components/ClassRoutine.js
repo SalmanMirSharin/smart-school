@@ -1,49 +1,46 @@
 
+
 import React, { useState } from 'react';
-// import { AiFillPlusCircle,AiOutlinePlus } from 'react-icons/ai';
 import { BsPlusCircleDotted } from 'react-icons/bs';
 import { useClassRoutineMutation } from '../rtkq/services/userAuthApi';
+import { Outlet, Link } from "react-router-dom";
+import ShowClassRoutine from './showClassRoutine';
 
-const Box = () => {
-  const [generatedMessages, setGeneratedMessages] = useState([]);
-  const [formData, setFormData] = useState([{ data: '' }]);
+const ClassRoutine = () => {
+  const [teacherAndSubject, setTeacherAndSubject] = useState([{ teacherData: '', subjectData: '' }]);
   const [classDate, setClassDate] = useState('');
-  const [teacherName, setTeacherName] = useState('');
   const [error, setError] = useState(false);
 
   const [formUser, { isLoading }] = useClassRoutineMutation();
 
-  const addInput = () => {
-    const newInput = { data: '' };
-    setFormData([...formData, newInput]);
+  const addTeacherAndSubjectInput = () => {
+    setTeacherAndSubject([...teacherAndSubject, { teacherData: '', subjectData: '' }]);
   };
 
-  const handleChange = (event, index) => {
+  const handleChange = (event, index, field) => {
     const { name, value } = event.target;
+
     if (name === 'classDay') {
       setClassDate(value);
-    } else if (name === 'teacherName') {
-      setTeacherName(value);
     } else {
-      const updatedFormData = [...formData];
-      updatedFormData[index].data = value;
-      setFormData(updatedFormData);
+      const updatedTeacherAndSubject = [...teacherAndSubject];
+      updatedTeacherAndSubject[index][field] = value;
+      setTeacherAndSubject(updatedTeacherAndSubject);
     }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formdata = {
+    const formData = {
       classDay: classDate,
-      teacherName: teacherName,
-      subjectData: formData.map(item => item.data),
-      // other fields as needed
+      teacherName: teacherAndSubject.map((item) => item.teacherData),
+      subjectData: teacherAndSubject.map((item) => item.subjectData),
     };
 
-    console.log('User data:', formdata);
+    console.log('User data:', formData);
 
     try {
-      const res = await formUser(formdata);
+      const res = await formUser(formData);
 
       if (res.error) {
         console.log('Login error:', res.error);
@@ -61,54 +58,62 @@ const Box = () => {
   return (
     <>
       <div className='text-center text-3xl p-5'>Make Class Routine</div>
-      <div className='h-screen'>
-      <div className='flex flex-wrap justify-center'>
-        {generatedMessages.map((message, index) => (
-          <div key={index}>{message}</div>
-        ))}
+      <div className='h-auto'>
+        <div className='flex flex-wrap justify-center '>
+          <input
+            className='w-48 border border-gray-400 m-2'
+            type="text"
+            name="classDay"
+            placeholder="Day"
+            value={classDate}
+            onChange={(event) => handleChange(event, 0, 'day')}
+            required
+          />
 
-        <input className='w-48 border border-gray-400 m-2'
-          type="text"
-          name="classDay"
-          placeholder="Day"
-          value={classDate}
-          onChange={handleChange}
-          required
-        />
-        <input className='w-48 border border-gray-400 m-2'
-          type="text"
-          name="teacherName"
-          placeholder="Teacher Name"
-          value={teacherName}
-          onChange={handleChange}
-          required
-        />
+          {teacherAndSubject.map((input, index) => (
+            <div key={index}>
+              <input
+                className='w-48 border border-gray-400 m-2'
+                type="text"
+                name="teacherName"
+                placeholder="Teacher"
+                value={input.teacherData}
+                onChange={(event) => handleChange(event, index, 'teacherData')}
+                required
+              />
+              <input
+                className='w-48 border border-gray-400 m-2'
+                type="text"
+                name="subjectData"
+                placeholder="Subject & Time"
+                value={input.subjectData}
+                onChange={(event) => handleChange(event, index, 'subjectData')}
+                required
+              />
+            </div>
+          ))}
 
-        {formData.map((input, index) => (
-          <div key={index}>
-            <input className='w-48 border border-gray-400 m-2'
-              type="text"
-              name="subjectData"
-              placeholder="Subject & Time"
-              value={input.data}
-              onChange={(event) => handleChange(event, index)}
-              required
-            />
-          </div>
-        ))}
-        <button
-          className='w-48'
-          onClick={() => addInput()}
-        >
-          <BsPlusCircleDotted className='w-32 h-10'  />
-        </button>
+          <button className='w-48' onClick={addTeacherAndSubjectInput}>
+            <BsPlusCircleDotted className='w-32 h-10' />
+          </button>
+        </div>
+        <form onSubmit={handleSubmit} className=''>
+          <button type="submit" className='p-3 px-11 uppercase mt-4 rounded-md text-white bg-blue-700 m-auto flex'>
+            Submit
+          </button>
+        </form>
+
+        <div className='pt-20'>
+
+<ShowClassRoutine/>
+
+</div>
+      
       </div>
-      <form onSubmit={handleSubmit} className=''>
-        <button type="submit" className='p-3 px-11 uppercase mt-4 rounded-md text-white bg-blue-700 m-auto flex'>Submit</button>
-      </form>
-      </div>
+
+
     </>
   );
 };
 
-export default Box;
+export default ClassRoutine;

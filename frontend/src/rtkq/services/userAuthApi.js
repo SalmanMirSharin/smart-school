@@ -127,8 +127,18 @@ export const userStudentApi = createApi({
       },
     }),
 
+    classRoutineGet: builder.query({
+      query: () => {
+        return {
+          url: 'classroutine-get/',
+          method: 'GET',
+
+        };
+      },
+    }),
+
 
   }),
 })
 
-export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation } = userStudentApi;
+export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation,useClassRoutineGetQuery } = userStudentApi;

@@ -61,14 +61,17 @@ export const Navbar = () => {
           </div>
           {/* Menu Part */}
           <div className="menu">
-            {/* <ul className="ml-[-9.5rem]"> */}
-            <ul className="">
+            <ul className="ml-[-9.5rem]">
+            {/* <ul className=""> */}
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
                 <Link to="/about">About Us</Link>
               </li>
+              {/* <li>
+                <Link to="/classroutine-get">RoutineShow</Link>
+              </li> */}
              
 
               {

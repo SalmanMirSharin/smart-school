@@ -12,6 +12,7 @@ import Profile from "./components/profile";
 import { StudentNav } from "./components/studentNav";
 import ShowStudentAdmissinData from "./components/showStudentAdmissinData";
 import ClassRoutine from "./components/ClassRoutine";
+import ShowClassRoutine from "./components/showClassRoutine";
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="studentnav" element={<StudentNav />} />
           <Route path="student-get" element={<ShowStudentAdmissinData />} />
           <Route path="classroutine" element={<ClassRoutine />} />
+          <Route path="classroutine-get" element={<ShowClassRoutine />} />
 
 
         </Routes>

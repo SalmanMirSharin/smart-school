@@ -113,7 +113,7 @@ class StudentAdmission(models.Model):
 
 class ClassRoutineModel(models.Model):
     classDay = models.CharField(max_length=100)
-    teacherName = models.CharField(max_length=100)
+    teacherName = models.TextField(max_length=100)
     subjectData = models.TextField()
     
     def __str__(self):

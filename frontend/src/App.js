@@ -5,15 +5,23 @@ import { Signup } from "./components/Signup";
 import {LeaveRequestForm} from './components/leaveRequest'
 import Test from "./test";
 import { Navbar } from "./components/Navbar";
-import Home from "./components/Home";
 import { StudentApplyAdmission } from "./components/StudentApplyAdmission";
+import Home from "./components/Home";
 import Footer from "./components/footer";
 import Profile from "./components/profile";
-
-
+import { StudentNav } from "./components/studentNav";
+import ShowStudentAdmissinData from "./components/showStudentAdmissinData";
+import ClassRoutine from "./components/ClassRoutine";
+import ShowClassRoutine from "./components/showClassRoutine";
+import VideoUploader from "./components/videoUpload";
+import ShowVideo from "./components/showVideo";
 
 
 function App() {
+
+
+
+
     return (
      
         
@@ -23,12 +31,18 @@ function App() {
         
           <Route index element={<Home />} />
           <Route path="leaverequest" element={<LeaveRequestForm />} />
+       
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<Signup />} />
 
           <Route path="apply_student_admission" element={<StudentApplyAdmission />} />
-          <Route path="profle" element={<Profile />} />
-         
+          <Route path="profile" element={<Profile />} />
+          <Route path="studentnav" element={<StudentNav />} />
+          <Route path="student-get" element={<ShowStudentAdmissinData />} />
+          <Route path="classroutine" element={<ClassRoutine />} />
+          <Route path="classroutine-get" element={<ShowClassRoutine />} />
+          <Route path="video-upload" element={<VideoUploader />} />
+          <Route path="video-get" element={<ShowVideo />} />
 
 
         </Routes>
@@ -36,6 +50,7 @@ function App() {
       </BrowserRouter>
     );
 }
+
     
 export default App;
 

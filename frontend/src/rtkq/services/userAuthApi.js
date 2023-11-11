@@ -104,7 +104,81 @@ export const userStudentApi = createApi({
       },
     }),
 
+
+    studentAdmissionGet: builder.query({
+      query: (user) => {
+
+        return {
+          url: 'studentinfo-get/', 
+          method: 'GET', 
+        };
+      },
+    }),
+
+    
+    classRoutine: builder.mutation({
+      query: (formdata) => {
+        const formData = createFormData(formdata);
+        return {
+          url: 'classroutine/',
+          method: 'POST',
+          body: formData,
+        };
+      },
+    }),
+
+    classRoutineGet: builder.query({
+      query: () => {
+        return {
+          url: 'classroutine-get/',
+          method: 'GET',
+
+        };
+      },
+    }),
+
+  deleteClassRoutine: builder.mutation({
+    query: (pk) => ({
+        url: `classroutine-delete/${pk}/`,
+        method: 'DELETE',
+    }),
+ }),
+
+
+ videoUpoad: builder.mutation({
+  query: (formdata) => {
+    const formData = createFormData(formdata);
+    return {
+      url: 'videos/',
+      method: 'POST',
+      body: formData,
+    };
+  },
+}),
+
+
+videoDelete: builder.mutation({
+  query: (id) => ({
+    url: `videos-del/${id}/`,
+    method: 'DELETE',
+  }),
+}),
+
+
+
+videoGet: builder.query({
+  query: (user) => {
+
+    return {
+      url: 'videos-get/', 
+      method: 'GET', 
+    };
+  },
+}),
+ 
+
+
   }),
 })
 
-export const { useStudentAdmissionMutation } = userStudentApi;
+export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation,useClassRoutineGetQuery,useDeleteClassRoutineMutation,useVideoUpoadMutation,useVideoDeleteMutation,useVideoGetQuery } = userStudentApi;

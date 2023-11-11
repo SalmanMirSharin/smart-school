@@ -174,9 +174,9 @@ export const Signup = () => {
                 />{" "}
                 Show Password
               </div>
-              <div>
+              {/* <div>
                 <a href="/login" className="hover:text-blue-700 hover:text-sm">Already have an account?</a>
-              </div>
+              </div> */}
               {/* Submit */}
               <div className="form-group form-button">
                 <input

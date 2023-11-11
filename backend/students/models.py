@@ -109,3 +109,21 @@ class StudentAdmission(models.Model):
     def __str__(self):
         return f'{self.studentFirstName} {self.studentLastName} - {self.admissionFor}'
 
+
+
+class ClassRoutineModel(models.Model):
+    classDay = models.CharField(max_length=100)
+    teacherName = models.TextField(max_length=100)
+    subjectData = models.TextField()
+    
+    def __str__(self):
+        return self.classDay
+    
+
+
+
+class Video(models.Model):
+    playlist = models.CharField(max_length=50,default='undefined')
+    title = models.CharField(max_length=100)
+    file = models.FileField(upload_to='videos/', max_length=500)
+    uploaded_at = models.DateTimeField(auto_now_add=True)

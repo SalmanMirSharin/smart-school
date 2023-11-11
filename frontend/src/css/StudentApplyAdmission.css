@@ -1,0 +1,162 @@
+/* StudentApplyAdmission.css */
+
+
+.student-admission-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+
+.title-1{
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.title-2{
+  display: flex;
+  justify-content: left;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.title-3{
+  display: flex;
+  justify-content: left;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.student-admission-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+.admission-form-col{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+
+.admission-form-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  max-width: 70%;
+}
+
+.admission-form-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+.admission-form-info label{
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.admission-form-info input{
+  font-size: 15px;
+  font-weight:300;
+  margin-bottom: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.admission-form-info select {
+  font-size: 15px;
+  font-weight: 300;
+  padding: 10px; 
+  margin-bottom: 10px;
+  width: 200px; /* Set the width to 100% */
+  border-radius: 5px;
+  border: 1px solid #ccc; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  background-color: #fff; 
+  transition: border-color 0.3s ease; 
+
+  /* Style the dropdown arrow */
+  appearance: none;
+  background-image: url('../img/arrow-icon.png');
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px; /* Adjust the size as needed */
+}
+
+/* Style the select when it's focused */
+.admission-form-info select:focus {
+  outline: none; 
+  border-color: #4CAF50; 
+}
+
+
+.admission-form-info strong{
+  font-size: 15px;
+  font-weight:300;
+  margin-bottom: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+  color: red;
+}
+
+.student-image {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.student-signature {
+  width: 100px;
+  height: 30px;
+  margin-bottom: 10px;
+
+}
+
+.submit-button{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+.submit-button button{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  max-width: 100%;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+}
+
+.submit-button button:hover {
+  background-color: #45a049;
+
+}

@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+a{
+    text-decoration: none;
+    
+    color: #000;
+}
+li{
+    list-style: none;
+}
+
+.main-nav{
+    /* background-color: #f9f9f9; */
+    background-color: #09093d;
+    width: 100%;
+    height: 6rem;
+    display: grid;
+    grid-template-columns: 1.5fr 3fr;
+    align-items: center;
+    justify-content: center;
+}
+img{
+    width: 200px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    margin-left: 10rem;
+
+}
+
+.logo{
+    display: flex;
+    grid-column: 1/2;
+    align-items: center;
+    justify-content: center;
+    margin-left: 3rem;
+}
+.menu{
+    width: 400px;
+    grid-column: 3/3;
+    margin-right : 3rem;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.menu ul{
+    align-items: right;
+    display: flex;
+    /* margin-left: 5rem; */
+    /* justify-content: space-around; */
+    justify-content: right;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    color: white;
+}
+
+.menu ul li{
+    margin-left: 1rem;
+}
+
+.menu ul :hover{
+    color: #336CFF;
+}
+
+
+.hamburger-menu{
+    display: none;
+}
+
+
+
+
+.student-nav-overlay {
+    position: absolute;
+    top: 5.5rem;
+    /* left: 0; */
+    right: 0;
+    bottom: 0;
+    /* background: rgba(0, 0, 0, 0.7); Add a semi-transparent background */
+    z-index: 999; /* Ensure it appears above other content */
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    transition: opacity 0.3s;
+  }
+  
+  /* Style the content of the overlay */
+  .student-nav-overlay .studentNav {
+    background: white;
+    padding: 20px;
+    /* Add any other styling you need */
+  }
+  
+
+@media(max-width: 998px) {
+    .hamburger-menu{
+        grid-column: 2/3;
+        display: flex;
+        justify-content: flex-end;
+        align-items: right;
+        height: 45px;
+       
+    }
+    .menu ul{
+        display: none;
+    }
+    
+}
+

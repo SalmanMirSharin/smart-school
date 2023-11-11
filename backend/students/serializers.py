@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import StudentAdmission,ClassRoutineModel
+<<<<<<< HEAD
 from .models import Video
+=======
+>>>>>>> mehedi
 
 
 class StudentAdmissionSerializer(serializers.ModelSerializer):

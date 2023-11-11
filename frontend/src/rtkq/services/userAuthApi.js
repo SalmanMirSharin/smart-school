@@ -137,6 +137,7 @@ export const userStudentApi = createApi({
       },
     }),
 
+<<<<<<< HEAD
   deleteClassRoutine: builder.mutation({
     query: (pk) => ({
         url: `classroutine-delete/${pk}/`,
@@ -177,8 +178,14 @@ videoGet: builder.query({
 }),
  
 
+=======
+>>>>>>> mehedi
 
   }),
 })
 
+<<<<<<< HEAD
 export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation,useClassRoutineGetQuery,useDeleteClassRoutineMutation,useVideoUpoadMutation,useVideoDeleteMutation,useVideoGetQuery } = userStudentApi;
+=======
+export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation,useClassRoutineGetQuery } = userStudentApi;
+>>>>>>> mehedi

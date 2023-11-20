@@ -177,8 +177,41 @@ videoGet: builder.query({
 }),
  
 
+// create student:
+
+
+createStudent: builder.mutation({
+  query: (formdata) => {
+    const formData = createFormData(formdata);
+    return {
+      url: 'create-student/',
+      method: 'POST',
+      body: formData,
+    };
+  },
+}),
+
+
+// deleteStudent: builder.mutation({
+//   query: (id) => ({
+//     url: `createstudent-del/${id}/`,
+//     method: 'DELETE',
+//   }),
+// }),
+
+
+deleteStudent: builder.mutation({
+  query: (id) => ({
+    url: `createstudent-del/${id}/`,
+    method: 'DELETE',
+  }),
+}),
+
+
+
+
 
   }),
 })
 
-export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation,useClassRoutineGetQuery,useDeleteClassRoutineMutation,useVideoUpoadMutation,useVideoDeleteMutation,useVideoGetQuery } = userStudentApi;
+export const { useStudentAdmissionMutation,useStudentAdmissionGetQuery, useClassRoutineMutation,useClassRoutineGetQuery,useDeleteClassRoutineMutation,useVideoUpoadMutation,useVideoDeleteMutation,useVideoGetQuery,useCreateStudentMutation,useDeleteStudentMutation } = userStudentApi;

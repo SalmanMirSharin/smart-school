@@ -2,6 +2,8 @@ from django.urls import path,include
 from .views import StudentAdmissionList, ClassRoutineView
 from rest_framework.routers import DefaultRouter
 from .views import VideoViewSet
+from .views import CreateStudentView
+from . import views
 
 router = DefaultRouter()
 router.register('studentinfo',StudentAdmissionList,basename='studentinfo')
@@ -11,10 +13,12 @@ router.register('classroutine-get',ClassRoutineView,basename='classroutine-get')
 router.register('classroutine-delete',ClassRoutineView,basename='classroutine-delete')
 router.register('videos', VideoViewSet)
 router.register('videos-get', VideoViewSet)
+router.register('create-student', CreateStudentView)
 
 
 urlpatterns = [
      path('',include(router.urls)),
      path('videos-del/<int:pk>/', VideoViewSet.as_view({'delete': 'delete_video'}), name='delete_video'),
-
+     path('createstudent-del/<int:pk>/', CreateStudentView.as_view({'delete': 'delete_createstudent'}), name='delete_video'),
+     # path('create-room/<str:uuid>/',views.create_room, name='create-room')
 ]

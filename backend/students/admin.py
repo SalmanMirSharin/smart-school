@@ -5,3 +5,4 @@ from . import models
 admin.site.register(models.StudentAdmission)
 admin.site.register(models.ClassRoutineModel)
 admin.site.register(models.Video)
+admin.site.register(models.CreateStudentModel)

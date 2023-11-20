@@ -6,6 +6,7 @@ import profile from "../image/profile.png";
 import { getToken } from "../rtkq/services/localStorageService";
 import { StudentNav } from "./studentNav";
 import { AdminNav } from "./adminNav";
+import {TeacherNav} from "./teacherNav";
 import { useGetLoggedUserQuery } from '../rtkq/services/userAuthApi'
 
 
@@ -116,6 +117,19 @@ export const Navbar = () => {
       (token.tokens ? (showNavbar && (
         <div className="student-nav-overlay">
           <StudentNav />
+        </div>
+      )): ""):""
+
+     }
+
+
+     {/* For Teacher: */}
+     {
+      userData.role.toLowerCase()==='teacher' ?
+      
+      (token.tokens ? (showNavbar && (
+        <div className="student-nav-overlay">
+          <TeacherNav />
         </div>
       )): ""):""
 

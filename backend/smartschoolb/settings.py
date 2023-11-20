@@ -32,6 +32,12 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+CHANNEL_LAYERS ={
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer',
+    }
+}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +50,7 @@ INSTALLED_APPS = [
     "corsheaders",
     'accounts',
     'students',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +83,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smartschoolb.wsgi.application'
+ASGI_APPLICATION = 'smartschoolb.asgi.application'
 
 
 # Database
